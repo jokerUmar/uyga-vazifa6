@@ -1,0 +1,94 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container{
+    width: 90%;
+    margin: 0 auto;
+}
+
+
+.box{
+    display: flex;
+    align-items: flex-start;
+    margin-top: 200px;
+    justify-content: space-between;
+}
+
+.add{
+    display: block;
+    padding: 5px 10px;
+    border-radius: 2px;
+    background-color: green;
+    color: white;
+    width: 200px;
+    border: solid 1px green;
+    margin: 0 auto;
+    text-align: center;
+}
+
+h1{
+    text-align: center;
+}
+
+form {
+    padding: 20px 10px 50px 20px ;
+    border: solid 1px ;
+    width: 40%;
+}
+
+input{
+    width: 400px;   
+    height: 30px;
+}
+
+.result-box {
+    width: 600px;
+    border: solid 1px;
+}
+
+.head,
+.body {
+    display: flex;
+    width: 600px;
+}
+
+
+
+.card {
+    padding: 10px 5px;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.id {
+    width: 20px;
+    text-align: center;
+}
+
+.number {
+    text-align: center;
+    width: 25%;
+}
+
+.name {
+    width: 25%;
+    text-align: center;
+}
+
+.control {
+    width: 25%;
+    text-align: center;
+}
+
+.control button{
+    background-color: red;
+    border: red;
+    color: white;
+    padding: 5px 12px;
+    border-radius: 2px;
+}
+
