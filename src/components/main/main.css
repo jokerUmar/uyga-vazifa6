@@ -33,7 +33,7 @@ h1{
     text-align: center;
 }
 
-form {
+.form {
     padding: 20px 10px 50px 20px ;
     border: solid 1px ;
     width: 40%;

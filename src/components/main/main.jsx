@@ -1,39 +1,61 @@
 import {useState , useRef} from 'react'
-import "./main.css"
+import "./main.css" 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Main() {
 
 const [isName, setIsName] = useState("");
 const [number, setNumber] = useState("");
-
 const [data, setData] = useState(
 [
 
 ]
 );
 
+const check = {
+name : isName.trim().length === 0 ,
+number : number.trim().length === 0
+}
+
 const addElement = () => {
-    
-const item = {
-id: Math.floor(Math.random()*100000000000),
-isName : isName,
+
+
+if (check.name || check.number) {
+
+toast.error("iltimos to'ldiring")
+
+} else{
+
+let item = {
+id:Date.now() ,
+isName : isName ,
 number : number
 }
 
-setData([...data , item])
+setData([...data , item ])
+
+setIsName("")
+setNumber("")
+
+toast.success("muvofaqqiyatli qo'shildi ")
 
 }
 
-console.log(data);
+
+}
 
 return (
+    <>  
+    <ToastContainer />
+
 <main className='main'>
     <div className="container">
         <h1>your data</h1>
 
         <div className="box">
 
-            <form>
+            <div className='form'>
                 <input type="text" placeholder='your name' value={isName} onChange={(e)=> setIsName(e.target.value)}
                 />
                 <br />
@@ -43,8 +65,8 @@ return (
                 />
                 <br />
                 <br />
-                <button className='add' onClick={()=>addElement()}>add</button>
-            </form>
+                <button className='add' onClick={()=> addElement()}>add</button>
+            </div>
 
             <div className='result-box'>
 
@@ -68,12 +90,12 @@ return (
                     </div>
                 </div>
 
-                <hr />
+            
+                {
 
+                data.map((i , idx) => {
+                return <div className="body card" key={idx }>
 
-                {   data.map((i , idx) =>{
-                    return <div key={i.id} className="body card">
-                    
                     <div className='id'>
                         <h3>{idx+1}</h3>
                     </div>
@@ -89,25 +111,17 @@ return (
                     <div className="control">
                         <button>delete</button>
                     </div>
-
                 </div>
+
                 })
 
                 }
 
-
-
-
-
             </div>
-
-
         </div>
-
-
-
     </div>
 </main>
+</>
 )
 }
 
