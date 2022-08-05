@@ -9,6 +9,9 @@
     margin: 0 auto;
 }
 
+.main{
+    height: 100vh;
+}
 
 .box{
     display: flex;
@@ -29,8 +32,41 @@
     text-align: center;
 }
 
+.header{
+    background-color: blue;
+    padding: 20px;
+}
+
+.dark{
+    padding: 20px;
+    background-color: rgba(24, 19, 19, 0.829);
+}
+
+.dark-btn{
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: solid 1px #008000;
+    background-color: #008000;
+    color: #fff;
+}
+
+.dark-btn1{
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: solid 1px #ff0000;
+    background-color: #ff0000   ;
+    color: #fff;
+}
+
+.header .container , .dark .container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
 h1{
-    text-align: center;
+    color: #fff;
+    text-align: center; 
 }
 
 .form {
@@ -41,7 +77,8 @@ h1{
 
 input{
     width: 400px;   
-    height: 30px;
+    height: 40px;
+    padding-left: 10px;
 }
 
 .result-box {
@@ -92,3 +129,6 @@ input{
     border-radius: 2px;
 }
 
+.alert{
+    background-color: red;
+}

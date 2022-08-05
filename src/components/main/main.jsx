@@ -1,9 +1,17 @@
-import {useState , useRef} from 'react'
+import {useState} from 'react'
 import "./main.css" 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+
+
+
 function Main() {
+
+
+const [dark, setDark] = useState(false);
+
+console.log(dark);
 
 const [isName, setIsName] = useState("");
 const [number, setNumber] = useState("");
@@ -17,7 +25,7 @@ const check = {
 name : isName.trim().length === 0 ,
 number : number.trim().length === 0
 }
-
+ 
 const addElement = () => {
 
 
@@ -39,19 +47,57 @@ setIsName("")
 setNumber("")
 
 toast.success("muvofaqqiyatli qo'shildi ")
+}
+}
+
+ 
+const deleteItem = (item) =>{
+    const filterItem = data.filter((obj) => {
+        return obj.id !== item
+    })  
+    setData(filterItem)
+
+
 
 }
 
-
+const main = {
+    backgroundColor : "white"
 }
+const darkMain = {
+    backgroundColor : "rgba(24, 19, 19, 0.829)"
+}
+
+const darkColor = {
+    color : "white"
+}
+const lihghtColor = {
+    color : "black"
+}
+const ligthBorder = {
+    border : "solid 1px black"
+}
+const darkBorder = {
+    border : "solid 1px white"
+}
+
+
 
 return (
     <>  
     <ToastContainer />
 
-<main className='main'>
+<main className='main' style={(dark) ? darkMain : main}>
+      
+        <div className={`${(dark) ? "dark" : "header"}`}>
+        <div className="container">
+        <h1>Your data</h1>
+        <button className={`${(dark) ? "dark-btn1" : "dark-btn"}`} onClick={(e) => {setDark((e)=> !e)}} >{`${(dark) ? "dark" : "light"}`}</button>
+        </div>
+        </div>
+
+
     <div className="container">
-        <h1>your data</h1>
 
         <div className="box">
 
@@ -68,48 +114,54 @@ return (
                 <button className='add' onClick={()=> addElement()}>add</button>
             </div>
 
-            <div className='result-box'>
+            <div className='result-box' style={(dark) ? darkBorder : ligthBorder}>
 
                 <div className="head card">
 
-                    <div className='id'>
-                        <h3>ID</h3>
+                    <div className='id' >
+                        <h3 style={(dark) ? darkColor : lihghtColor}>ID</h3>
 
                     </div>
 
                     <div className="name">
-                        <h3>Name</h3>
+                        <h3 style={(dark) ? darkColor : lihghtColor}>Name</h3>
                     </div>
 
                     <div className="number">
-                        <h3>Phone number</h3>
+                        <h3 style={(dark) ? darkColor : lihghtColor}>Phone number</h3>
                     </div>
 
                     <div className="control">
-                        <h3>Control</h3>
+                        <h3 style={(dark) ? darkColor : lihghtColor}>Control</h3>
                     </div>
                 </div>
 
             
                 {
+                 
+                 (data.length === 0) ? <div className="alert">
+                    <h1 className=''>NOT FOUND</h1>
+                 </div>
+                
+                :
 
-                data.map((i , idx) => {
-                return <div className="body card" key={idx }>
+                data.map((item , idx) => {
+                return <div className="body card" key={idx}>
 
                     <div className='id'>
                         <h3>{idx+1}</h3>
                     </div>
 
                     <div className="name">
-                        <h3>{i.isName}</h3>
+                        <h3>{item.isName}</h3>
                     </div>
 
                     <div className="number">
-                        <h3>{i.number}</h3>
+                        <h3>{item.number}</h3>
                     </div>
 
                     <div className="control">
-                        <button>delete</button>
+                        <button onClick={() => deleteItem(item.id)}>delete</button>
                     </div>
                 </div>
 
